@@ -9,7 +9,7 @@ To use this page, you need to pass the API key as a URL parameter named `apiKey`
 For example, if your API key is `12345`, you would use the following URL:
 
 ```
-https://<your-github-username>.github.io/ivado-bootcamp/?apiKey=12345
+https://<your-github-username>.github.io/display-api-key/?apiKey=12345
 ```
 
 ## Deployment
