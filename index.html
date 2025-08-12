@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Key</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        #apiKey {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>API Key</h2>
+        <pre id="apiKey">Please provide an API key in the URL (e.g., ?apiKey=YOUR_KEY)</pre>
+        <button onclick="copyApiKey()">Copy API Key</button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const apiKey = urlParams.get('apiKey');
+            if (apiKey) {
+                document.getElementById('apiKey').innerText = apiKey;
+            }
+        };
+
+        function copyApiKey() {
+            const apiKey = document.getElementById('apiKey').innerText;
+            if (apiKey.startsWith('Please provide')) {
+                alert('No API Key to copy.');
+                return;
+            }
+            navigator.clipboard.writeText(apiKey).then(() => {
+                alert('API Key copied to clipboard!');
+            }, (err) => {
+                alert('Failed to copy API Key: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
